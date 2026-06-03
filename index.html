@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stroke Landmark Trials Evidence Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <div class="brand">Stroke Trials Library</div>
+      <div class="navlinks">
+        <a href="#input">Input</a>
+        <a href="#detected">Extraction</a>
+        <a href="#library">Library</a>
+        <a href="#references">References</a>
+      </div>
+    </nav>
+    <section class="heroContent">
+      <p class="eyebrow">AHA/ASA • Continuum • Evidence review</p>
+      <h1>Stroke Landmark Trials Evidence Library</h1>
+      <p class="subtitle">AHA/ASA and Continuum-based trial extraction tool</p>
+      <p class="heroText">
+        Paste guideline or review text, upload a .txt file, then scan for landmark stroke trials.
+        The app marks trials found in your text and flags important built-in trials that may be missing.
+      </p>
+      <div class="heroButtons">
+        <a class="button primary" href="#input">Start extraction</a>
+        <a class="button secondary" href="#library">Browse trial library</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="notice">
+      <strong>Educational use only.</strong>
+      This static GitHub Pages app is not a clinical decision-making tool. Verify against the original guideline
+      and trial publication before use in academic work, patient care, presentations, or manuscripts.
+    </section>
+
+    <section id="input" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">Upload / input</p>
+        <h2>Paste guideline or review text</h2>
+      </div>
+      <div class="grid two">
+        <div>
+          <label for="sourceText">Manual input</label>
+          <textarea id="sourceText" placeholder="Paste AHA/ASA guideline text, Continuum review text, references, or extracted PDF text here..."></textarea>
+        </div>
+        <div class="helperCard">
+          <h3>PDF note</h3>
+          <p>
+            GitHub Pages is a static website and cannot reliably read PDFs without a backend or a heavier browser PDF parser.
+            For this version, copy/paste PDF text into the text box or upload a .txt file exported from your PDF.
+          </p>
+          <label for="txtUpload" class="uploadLabel">Upload .txt file</label>
+          <input id="txtUpload" type="file" accept=".txt,text/plain" />
+          <button id="scanBtn" class="button primary full">Scan for landmark trials</button>
+          <button id="clearBtn" class="button secondary full">Clear input</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="detected" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">Trial extraction</p>
+        <h2>Detected and missing important trials</h2>
+      </div>
+      <div class="stats">
+        <div><span id="foundCount">0</span><small>Found in uploaded text</small></div>
+        <div><span id="missingCount">0</span><small>Important not detected</small></div>
+        <div><span id="totalCount">0</span><small>Trials in built-in database</small></div>
+      </div>
+      <div id="detectedList" class="detectedList"></div>
+    </section>
+
+    <section class="toolbar" aria-label="Search and filter">
+      <input id="searchBox" type="search" placeholder="Search trial name, condition, result, criticism..." />
+      <select id="categoryFilter"><option value="">All categories</option></select>
+      <select id="conditionFilter"><option value="">All conditions</option></select>
+      <select id="interventionFilter"><option value="">All interventions</option></select>
+      <select id="topicFilter"><option value="">All guideline topics</option></select>
+      <button id="exportCsv" class="button secondary">Export CSV</button>
+      <button id="copyTable" class="button secondary">Copy table</button>
+      <button id="printView" class="button secondary">Print</button>
+    </section>
+
+    <section id="library" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">Trial library</p>
+        <h2>Organized landmark stroke trials</h2>
+      </div>
+      <div id="trialContainer"></div>
+    </section>
+
+    <section id="references" class="panel">
+      <div class="sectionHeader">
+        <p class="eyebrow">References</p>
+        <h2>Major trial references</h2>
+      </div>
+      <p class="muted">PubMed-style citations are provided where possible. Items labeled “citation to verify” should be checked against the original article.</p>
+      <div id="referenceList" class="referenceList"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built for rapid academic review of landmark stroke trials. Always verify exact sample size, endpoints, and effect estimates from original publications.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
